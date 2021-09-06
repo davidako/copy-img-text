@@ -1,0 +1,14 @@
+# IDEs
+.idea/
+
+# Environments
+venv/
+
+# Distribution / packaging
+build/
+dist/
+*.egg*
+
+# Cache files
+__pycache__/
+.pytest_cache

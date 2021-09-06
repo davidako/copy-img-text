@@ -1,5 +1,5 @@
 """
- Copy text from an image.
+ Copy text from a screenshot.
 """
 
 import os
@@ -34,19 +34,24 @@ def lang_code_map():
 
     return lang_map
 
+
+def get_default_lang():
+    """Guess language based on configured system language."""
+    return lang_code_map()[locale.getdefaultlocale()[0][:2]]
+
+
 def copy_image_text():
     """Extract text from an image and copy to clipboard."""
 
     cb = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
     image = cb.wait_for_image()
     clip_image = 'clipimage.png'
-    enhanced_name = 'enhanced.jpg'
 
     if image is not None:
         image.savev(clip_image, "png", "", "")
         # subprocess.call(["xdg-open", clip_image])
 
-        default_lang = lang_code_map()[locale.getdefaultlocale()[0][:2]]
+        default_lang = get_default_lang()
 
         text = pytesseract.image_to_string(Image.open(clip_image), default_lang)
         copy_gtk(text)
@@ -56,8 +61,4 @@ def copy_image_text():
     else:
         print("No image in clipboard found")
         sys.exit(1)
-
-# Launch the script.
-copy_image_text()
-
 

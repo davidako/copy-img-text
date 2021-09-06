@@ -1,0 +1,6 @@
+#!/usr/bin/python3
+
+from cp_img_txt.cpimgtxt import copy_image_text
+
+if __name__ == "__main__":
+    copy_image_text()
