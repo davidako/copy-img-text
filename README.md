@@ -29,7 +29,7 @@ $ cpimgtxt
 
 After this, check the clipboard again, and you should find the text extracted from the image inside it.
 
-Obviously you can also bind custom keyboard shortcuts to avoid executing the script from command-line each time.
+Obviously you can also bind custom Operating System keyboard shortcuts to avoid executing the script from command-line each time.
 
 ## Run tests
 
