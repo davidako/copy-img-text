@@ -28,7 +28,7 @@ Copy text directly from an image:
 Clone this repository:
 
 ```bash
-$ git clone https://github.com/davidako/copy-img-text.git
+$ git clone https://github.com/davidako/cpimgtxt
 $ cd copy-img-tex
 ```
 
