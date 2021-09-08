@@ -19,8 +19,6 @@ Copy text directly from an image:
 
 ## Installation
 
----
-
 Clone this repository:
 
 ```bash
