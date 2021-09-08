@@ -1,8 +1,13 @@
 #!/bin/bash
 
-### Cross-distro package manager script ###
-
 # Inspired by https://ilhicas.com/2018/08/08/bash-script-to-install-packages-multiple-os.html
+
+# Red color for errors.
+RED='\033[0;31m'
+# Green background color for success messages.
+GR_BG="\e[42m%s\e[0m"
+# No Color.
+NC='\033[0m'
 
 # Contains an associative list of operating systems.
 declare -A distros
@@ -35,13 +40,22 @@ echo "Checking dependencies..."
 echo "${dependencies}" | sed 's/\s/\n- /g'
 echo
 
+# List of missing dependent packages.
+declare -a missing_deps
+
 for dep in ${dependencies}; do
   dpkg-query -W "*$dep*"  &> /dev/null
   if [ $? != 0 ]; then
-    echo "Missing dependency package. Please install the following package: ${dep}"
-    exit 1
+    missing_deps+=("${dep}")
   fi
 done
+
+if [ ${#missing_deps[@]} != 0 ]; then
+  printf "${RED}[ERROR]${NC} Missing dependencies. Please install the following packages:\n"
+  for package in "${missing_deps[@]}"; do
+      echo "- ${package}"
+  done
+fi
 
 echo "All packages are present."
 echo
@@ -49,3 +63,7 @@ echo
 echo "Installing the app..."
 pip3 install .
 
+if [ $? == 0 ]; then
+  printf "\n"
+  printf "✔ ${GR_BG}\n" "Successfully completed installation!"
+fi

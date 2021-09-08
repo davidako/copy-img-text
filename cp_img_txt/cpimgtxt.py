@@ -23,7 +23,11 @@ def copy_gtk(text):
 
 
 def lang_code_map():
-    """Map iso1 language codes to iso2."""
+    """
+    Map iso1 language codes to iso2.
+
+    :return Dict of two-letter lang codes mapped to three-letter codes.
+    """
     lang_map = {}
     for lang in pycountry.languages:
         alpha2 = getattr(lang, 'alpha_2', None)
@@ -36,7 +40,17 @@ def lang_code_map():
 
 
 def get_default_lang():
-    """Guess language based on configured system language."""
+    """
+    Allow users to set language as an env variable. Otherwise retrieve system lang.
+
+    :return Language code.
+    """
+    env_lang = os.getenv('IMG_LANG')
+    if env_lang is not None and len(env_lang) != 3:
+        print("Please use three-digit language code, e.g. eng, deu etc.")
+    else:
+        return env_lang
+
     return lang_code_map()[locale.getdefaultlocale()[0][:2]]
 
 
@@ -49,11 +63,10 @@ def copy_image_text():
 
     if image is not None:
         image.savev(clip_image, "png", "", "")
+        # TODO maybe in the future add an option for showing the copied text in a popup?
         # subprocess.call(["xdg-open", clip_image])
 
-        default_lang = get_default_lang()
-
-        text = pytesseract.image_to_string(Image.open(clip_image), default_lang)
+        text = pytesseract.image_to_string(Image.open(clip_image), get_default_lang())
         copy_gtk(text)
 
         # Remove the temporary image.
@@ -61,4 +74,3 @@ def copy_image_text():
     else:
         print("No image in clipboard found")
         sys.exit(1)
-
