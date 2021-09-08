@@ -2,6 +2,7 @@
 
 # Inspired by https://ilhicas.com/2018/08/08/bash-script-to-install-packages-multiple-os.html
 
+
 # Red color for errors.
 RED='\033[0;31m'
 # Green background color for success messages.
@@ -28,6 +29,7 @@ done
 echo "Operating system: ${os_type}"
 
 # TODO add centos, ferdora and macOS support.
+
 
 # Dependency packages specific to an OS.
 declare -A os_packages
@@ -63,7 +65,7 @@ echo
 echo "Installing the app..."
 pip3 install .
 
+install_path=$(which cpimgtxt)
 if [ $? == 0 ]; then
-  printf "\n"
-  printf "✔ ${GR_BG}\n" "Successfully completed installation!"
+  printf " ✔ ${GR_BG}\n" "Successfully installed to ${install_path}"
 fi

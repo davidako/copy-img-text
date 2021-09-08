@@ -16,6 +16,12 @@ import pycountry
 
 def copy_gtk(text):
     """Copy text to clipboard."""
+
+    # Remove form feed character.
+    text = text.replace('\x0C', '')
+    # Remove weird arrows until a fix is found.
+    text = text.replace('»', '')
+
     display = Gdk.Display.get_default()
     clipboard = Gtk.Clipboard.get_default(display)
     clipboard.set_text(text, -1)
@@ -41,7 +47,8 @@ def lang_code_map():
 
 def get_default_lang():
     """
-    Allow users to set language as an env variable. Otherwise retrieve system lang.
+    Allow users to set language as an env variable. Otherwise try to retrieve system lang.
+    If both options fail, fallback to English as default.
 
     :return Language code.
     """
@@ -51,7 +58,11 @@ def get_default_lang():
     else:
         return env_lang
 
-    return lang_code_map()[locale.getdefaultlocale()[0][:2]]
+    sys_language = locale.getdefaultlocale()
+    if sys_language is not None:
+        return lang_code_map()[sys_language[0][:2]]
+
+    return 'eng'
 
 
 def copy_image_text():

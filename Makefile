@@ -1,8 +1,10 @@
 PYTHON = python3
 
-.PHONY: install test clean
+.PHONY: build test clean
 
-install:
+default: build
+
+build:
 	bash ./scripts/resolve-deps.sh
 
 test:
