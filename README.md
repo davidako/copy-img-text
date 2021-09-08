@@ -2,19 +2,22 @@
 
 Easily copy text from a copied image.
 
-
 ![Copying image text demo](demo/demo.gif)
-
 
 ## Installation
 
-Use a virtual environment, or install the app system-wide.
-
-First cd into the cloned project and run the following commands:
+Install dependencies:
 
 ```bash
-$ sudo pip install wheel
-$ sudo pip install .
+$ sudo apt install build-essential libcairo2-dev
+$ sudo apt install tesseract-ocr libtesseract-dev
+$ sudo apt install libgirepository1.0-dev 
+```
+
+Now cd into the cloned project and run the following commands:
+
+```bash
+$ pip install .
 ```
 
 This will install an executable script `cpscreen` in /usr/local/bin directory.
@@ -29,7 +32,8 @@ $ cpimgtxt
 
 After this, check the clipboard again, and you should find the text extracted from the image inside it.
 
-Obviously you can also bind custom Operating System keyboard shortcuts to avoid executing the script from command-line each time.
+Obviously you can also bind custom Operating System keyboard shortcuts to avoid executing the script from command-line
+each time.
 
 ## Run tests
 
