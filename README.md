@@ -2,16 +2,12 @@
 
 ## About
 
----
-
 **cpimgtxt** uses [Tesseract](https://github.com/tesseract-ocr/tesseract) ocr library for extracting texts from an image and copies the text to a clipboard.
 
 It's supported on Linux distributions, but OSX is also on under way.
 
 
 ## Demo
-
----
 
 Copy text from a screenshot (using [Flameshot](https://github.com/flameshot-org/flameshot))
 
@@ -50,8 +46,6 @@ with `sudo` of course, in which case it will probably be installed in `/usr/loca
 
 ## Configuration
 
----
-
 You can change default language by setting the `IMG_LANG` environment variable. Set French for example:
 
 ```bash
@@ -68,8 +62,6 @@ Language code is retrieved in the following order:
 
 ## Usage
 
----
-
 Copy an image with some text, or copy a screenshot of an area with text.
 
 ```bash
@@ -82,8 +74,6 @@ After this, check the clipboard again, and you should find the text extracted fr
 each time.**
 
 ## Run tests
-
----
 
 Make sure you're inside the root of the project.
 
