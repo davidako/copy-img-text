@@ -3,12 +3,15 @@
 ## About
 
 ---
-Copy image text uses [Tesseract](https://github.com/tesseract-ocr/tesseract) ocr library for extracting texts from an image and copies the text to a clipboard.
+
+**cpimgtxt** uses [Tesseract](https://github.com/tesseract-ocr/tesseract) ocr library for extracting texts from an image and copies the text to a clipboard.
 
 It's supported on Linux distributions, but OSX is also on under way.
 
 
 ## Demo
+
+---
 
 Copy text from a screenshot (using [Flameshot](https://github.com/flameshot-org/flameshot))
 
@@ -19,6 +22,8 @@ Copy text directly from an image:
 ![Copying image text demo](demo/img-demo.gif)
 
 ## Installation
+
+---
 
 Clone this repository:
 
@@ -46,6 +51,7 @@ with `sudo` of course, in which case it will probably be installed in `/usr/loca
 ## Configuration
 
 ---
+
 You can change default language by setting the `IMG_LANG` environment variable. Set French for example:
 
 ```bash
@@ -61,6 +67,8 @@ Language code is retrieved in the following order:
  - If both ways fail, fallback to English
 
 ## Usage
+
+---
 
 Copy an image with some text, or copy a screenshot of an area with text.
 
@@ -85,10 +93,14 @@ $ make test
 
 ## Authors
 
+---
+
 Current implementation:
 
 * [Daviti Magaldadze](https://github.com/davidako/)
 
 ## License
+
+--- 
 
 You are free to use this program under the terms of the license found in LICENSE file.
