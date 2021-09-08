@@ -83,6 +83,8 @@ each time.**
 
 ## Run tests
 
+---
+
 Make sure you're inside the root of the project.
 
 ```bash
