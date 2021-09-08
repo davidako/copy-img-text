@@ -83,8 +83,6 @@ each time.**
 
 ## Run tests
 
----
-
 Make sure you're inside the root of the project.
 
 ```bash
@@ -93,14 +91,10 @@ $ make test
 
 ## Authors
 
----
-
 Current implementation:
 
 * [Daviti Magaldadze](https://github.com/davidako/)
 
 ## License
-
---- 
 
 You are free to use this program under the terms of the license found in LICENSE file.
